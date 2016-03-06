@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"net"
 	"net/http"
-	// "net/url"
 	"os"
 	"strconv"
 	"time"
@@ -17,10 +16,14 @@ const (
 	logPath string = "./log/"               //日志记录
 )
 
-var false_count int64 = 0
+var logname = GetLogName()
+var false_count int = 0
 
 func main() {
 	logging()
+	writeLog("test")
+	writeLog("test1")
+	writeLog("test2")
 	for true {
 		//向服务器发送信息
 		err := send_message()
@@ -28,7 +31,9 @@ func main() {
 			time.Sleep(time.Second * 10)
 		} else {
 			false_count++
-			fmt.Println("false count:", false_count)
+			data := strconv.Itoa(false_count)
+			writeLog("Connect false count:" + data)
+			// fmt.Println("false count:" + data)
 			if false_count >= 10 {
 				time.Sleep(60 * time.Second)
 			}
@@ -41,10 +46,12 @@ func main() {
 func send_message() bool {
 	// 获取mac地址，macAddress 是一个切片类型
 	macAddress := getMacAddress()
-	fmt.Println(macAddress)
+	// fmt.Println(macAddress)
+
+	wrinteInit("My MacAddress : " + macAddress[1])
 
 	var client http.Client
-	fmt.Println(macAddress[1])
+	// fmt.Println(macAddress[1])
 	_, err := client.Get("http://" + host + port + path + "?mac=" + macAddress[1])
 	if err != nil {
 		return false
@@ -78,8 +85,9 @@ func initLog() {
 	file, err := os.OpenFile(logPath, 0, os.ModePerm)
 	if err != nil {
 		err := createDir()
+		wrinteInit("Create Log Dir Success !")
 		if !err {
-			fmt.Printf("Log Dir is Exist!\n")
+			writeLog("Log Dir is Exist!\n")
 			return
 		}
 	}
@@ -89,6 +97,7 @@ func initLog() {
 	logFile, err := os.OpenFile(logPath+"/"+logname, 0, os.ModePerm)
 	if err != nil {
 		err1 := createFile()
+		wrinteInit("Create Log File" + logname + "success")
 		if !err1 {
 			return
 		}
@@ -100,10 +109,10 @@ func initLog() {
 // 创建当天的Log文件
 func createFile() bool {
 	logname := GetLogName()
-	fmt.Println(logname)
+	// fmt.Println(logname)
 	logFile, err := os.Create(logPath + "/" + logname)
 	if err != nil {
-		fmt.Println("Create Log File " + logname + " error ")
+		writeLog("Create Log File " + logname + " error ")
 		return false
 	}
 	defer logFile.Close()
@@ -129,4 +138,25 @@ func GetLogName() (name string) {
 
 	return "logging" + "_" + year + "_" + month + "_" + day + ".log"
 
+}
+
+//写入启动信息
+func wrinteInit(mess string) {
+	file, err := os.Create("init.log")
+	if err != nil {
+		return
+	}
+	file.WriteString(time.Now().String() + "  " + mess + " \n")
+	file.Close()
+}
+
+//写入日志
+func writeLog(mess string) {
+	filename := logPath + logname
+	file, _ := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, os.ModePerm)
+
+	// fmt.Println(time.Now().String() + "  " + mess + " \n")
+	//data := time.Now().String() + "  " + mess + " \n"
+	file.WriteString(time.Now().String() + "  " + mess + " \n")
+	defer file.Close()
 }
