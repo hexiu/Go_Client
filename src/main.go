@@ -72,6 +72,7 @@ func logging() {
 
 }
 
+//初始化日志相关信息
 func initLog() {
 
 	file, err := os.OpenFile(logPath, 0, os.ModePerm)
@@ -96,6 +97,7 @@ func initLog() {
 	defer logFile.Close()
 }
 
+// 创建当天的Log文件
 func createFile() bool {
 	logname := GetLogName()
 	fmt.Println(logname)
@@ -108,6 +110,7 @@ func createFile() bool {
 	return true
 }
 
+//创建日志目录
 func createDir() bool {
 	file, err := os.OpenFile(logPath, 0, os.ModePerm)
 	if err != nil {
@@ -118,6 +121,7 @@ func createDir() bool {
 	return false
 }
 
+//获取字符串的数据名
 func GetLogName() (name string) {
 	year := strconv.Itoa(time.Now().Year())
 	month := time.Now().Month().String()
