@@ -10,7 +10,7 @@ import (
 )
 
 const (
-    host    string = "222.24.24.14"        //远端服务器的 主机域名 Or IP
+    host    string = "222.24.24.102"        //远端服务器的 主机域名 Or IP
 	port    string = ":8080"                //远端服务器的ip
 	path    string = "/SignIn/DealUser.jsp" //远端服务器的URI
 	logPath string = "./log/"               //日志记录
