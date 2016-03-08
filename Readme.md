@@ -11,8 +11,8 @@
 - 正常运行后，会记录连接状况日志。
 
 ### 使用方法
-- Linux 查看linux 目录下[Readme.md](https://github.com/hexiu/Go_Client/linux/ "Linux 客户端使用说明") 
-- Windows 查看windows 目录下[Readme.md](https://github.com/hexiu/Go_Client/windows/"windows客户端使用说明") 
+- Linux 查看linux 目录下[Readme.md](https://github.com/hexiu/Go_Client/tree/master/linux "Linux 客户端使用说明") 
+- Windows 查看windows 目录下[Readme.md](https://github.com/hexiu/Go_Client/tree/master/windows"windows客户端使用说明") 
 
 ### 下载地址
 - [Linux 版64位 二进制](http://7xpugm.com1.z0.glb.clouddn.com/client.zip "Linux客户端")
