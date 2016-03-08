@@ -1,0 +1,7 @@
+添加进注册表：
+
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "client" /t REG_SZ /d "D:\client\client.vbe" /f 
+
+删除注册表信息：
+reg delete "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "client" /f
+

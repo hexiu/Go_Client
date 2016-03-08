@@ -12,11 +12,11 @@
 
 ### 使用方法
 - Linux 查看linux 目录下[Readme.md](https://github.com/hexiu/Go_Client/linux/Readme.md "Linux 客户端使用说明") 
-- Windows 查看windows 目录下[Readme.md](https://github.com/hexiu/Go_Client/windows/"windows客户端使用说明") 
+- Windows 查看windows 目录下[Readme.md](https://github.com/hexiu/Go_Client/windows/Readme.md"windows客户端使用说明") 
 
 ### 下载地址
-- [Linux 版64位 二进制](https://github.com/hexiu/Go_Client/linux "Linux客户端")
-- [windows 版64位 二进制](https://github.com/hexiu/Go_Client"Wndows客户端")
+- [Linux 版64位 二进制](https://github.com/hexiu/Go_Client/linux/client.zip "Linux客户端")
+- [windows 版64位 二进制](https://github.com/hexiu/Go_Client/windows/client.zip "Wndows客户端")
 - [源码下载](https://github.com/hexiu/Go_Client/src/main.go "Client 源码")
 
 ### 说明
