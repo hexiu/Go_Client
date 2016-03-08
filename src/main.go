@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	host    string = "192.168.0.105"        //远端服务器的 主机域名 Or IP
+    host    string = "222.24.24.14"        //远端服务器的 主机域名 Or IP
 	port    string = ":8080"                //远端服务器的ip
 	path    string = "/SignIn/DealUser.jsp" //远端服务器的URI
 	logPath string = "./log/"               //日志记录
@@ -51,7 +51,7 @@ func send_message() bool {
 	wrinteInit("My MacAddress : " + macAddress[1])
 
 	var client http.Client
-	// fmt.Println(macAddress[1])
+	// fmt.Println(macAddress[0])
 	_, err := client.Get("http://" + host + port + path + "?mac=" + macAddress[1])
 	if err != nil {
 		return false
@@ -64,7 +64,7 @@ func send_message() bool {
 // 获取Mac地址,返回一个切片
 func getMacAddress() (macAdress []string) {
 	interfaces, _ := net.Interfaces()
-	macAdress = make([]string, 3)
+	macAdress = make([]string, 5)
 	index := 0
 	for _, inter := range interfaces {
 		mac := inter.HardwareAddr
