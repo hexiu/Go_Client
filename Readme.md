@@ -11,13 +11,13 @@
 - 正常运行后，会记录连接状况日志。
 
 ### 使用方法
-- Linux 查看linux 目录下[Readme.md](https://github.com/hexiu/Go_Client/linux/Readme.md "Linux 客户端使用说明") 
-- Windows 查看windows 目录下[Readme.md](https://github.com/hexiu/Go_Client/windows/Readme.md"windows客户端使用说明") 
+- Linux 查看linux 目录下[Readme.md](https://github.com/hexiu/Go_Client/linux/ "Linux 客户端使用说明") 
+- Windows 查看windows 目录下[Readme.md](https://github.com/hexiu/Go_Client/windows/"windows客户端使用说明") 
 
 ### 下载地址
-- [Linux 版64位 二进制](https://github.com/hexiu/Go_Client/linux/client.zip "Linux客户端")
-- [windows 版64位 二进制](https://github.com/hexiu/Go_Client/windows/client.zip "Wndows客户端")
-- [源码下载](https://github.com/hexiu/Go_Client/src/main.go "Client 源码")
+- [Linux 版64位 二进制](http://7xpugm.com1.z0.glb.clouddn.com/client.zip "Linux客户端")
+- [windows 版64位 二进制](http://7xpugm.com1.z0.glb.clouddn.com/client.exe "Wndows客户端")
+- [源码下载](https://github.com/hexiu/Go_Client/src/ "Client 源码")
 
 ### 说明
 	此程序主要响应工作室签到需求，时间紧迫，可能在某些方面做的不是很好，请海涵。 

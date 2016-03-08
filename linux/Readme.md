@@ -1,7 +1,7 @@
 # Linux 客户端使用要求
 
 - 切换目录至(`cd /mnt/`)
-- 将[Linux 客户端压缩包](https://github.com/hexiu/Go_Client/linux/client.zip "Linux 客户端") 下载至mnt目录下
+- 将[Linux 客户端压缩包](http://7xpugm.com1.z0.glb.clouddn.com/client.zip "Linux 客户端") 下载至mnt目录下
 - 解压缩`unzip client`
   ```
   也可以：
