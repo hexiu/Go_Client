@@ -10,10 +10,11 @@ import (
 )
 
 const (
-    host    string = "222.24.24.102"        //远端服务器的 主机域名 Or IP
-	port    string = ":8080"                //远端服务器的ip
-	path    string = "/SignIn/DealUser.jsp" //远端服务器的URI
-	logPath string = "./log/"               //日志记录
+	host    string = "222.24.24.102" //远端服务器的 主机域名 Or IP
+	port    string = ":8080"         //远端服务器的ip
+	path    string = "/logs"         //远端服务器的URI
+	logPath string = "./log/"        //日志记录
+	Time    int    = 60
 )
 
 var logname = GetLogName()
@@ -28,14 +29,14 @@ func main() {
 		//向服务器发送信息
 		err := send_message()
 		if err {
-			time.Sleep(time.Second * 10)
+			time.Sleep(time.Second * time.Duration(Time))
 		} else {
 			false_count++
 			data := strconv.Itoa(false_count)
 			writeLog("Connect false count:" + data)
 			// fmt.Println("false count:" + data)
 			if false_count >= 10 {
-				time.Sleep(60 * time.Second)
+				time.Sleep(5 * time.Duration(Time) * time.Second)
 			}
 			continue
 		}
@@ -55,6 +56,8 @@ func send_message() bool {
 	_, err := client.Get("http://" + host + port + path + "?mac=" + macAddress[1])
 	if err != nil {
 		return false
+	} else {
+		writeLog("Send Success " + time.Now().String())
 	}
 	// fmt.Println(mess)
 	// fmt.Println(mess.Proto)
