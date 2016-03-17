@@ -10,8 +10,8 @@ import (
 )
 
 const (
+//	host    string = "127.0.0.1" //远端服务器的 主机域名 Or IP
 	host    string = "222.24.24.102" //远端服务器的 主机域名 Or IP
-//	host    string = "222.24.24.76" //远端服务器的 主机域名 Or IP
 	port    string = ":8080"         //远端服务器的ip
 	path    string = "/logs"         //远端服务器的URI
 	logPath string = "./log/"        //日志记录
