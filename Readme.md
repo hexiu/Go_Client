@@ -15,8 +15,8 @@
 - Windows 查看windows 目录下[Readme.md](https://github.com/hexiu/Go_Client/tree/master/windows"windows客户端使用说明") 
 
 ### 下载地址
-- [Linux 版64位 二进制](http://7xpugm.com1.z0.glb.clouddn.com/client.zip "Linux客户端")
-- [windows 版64位 二进制](http://7xpugm.com1.z0.glb.clouddn.com/client.exe "Wndows客户端")
+- [Linux 版64位 二进制](http://download.jaxiu.cn/client.zip "Linux客户端")
+- [windows 版64位 二进制](http://download.jaxiu.cn/win-client.zip "Wndows客户端")
 - [源码下载](https://github.com/hexiu/Go_Client/src/ "Client 源码")
 
 ### 说明
