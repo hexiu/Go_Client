@@ -1,18 +1,13 @@
 # Linux 客户端使用要求
 
 - 切换目录至(`cd /mnt/`)
-- 将[Linux 客户端压缩包](http://download.jaxiu.cn/client.zip "Linux 客户端") 下载至mnt目录下
-- 解压缩`unzip client`
-  ```
-  也可以：
-  wget https://github.com/hexiu/Go_Client/linux/client.zip
-  ```
-- 将 startClient.sh 脚本放在/etc/profile.d 目录下
-  - Ubuntu 
-    
-    `sudo mv /mnt/client/startClient.sh /etc/profile.d/`
-  - Redhat/CentOS:  
-      
-      `su - root`
-      
-      `mv /mnt/client/startClient.sh /etc/profile.d/`
+- 将[Linux 客户端压缩包](http://download.jaxiu.cn/clientForLinux.zip "Linux 客户端") 下载至本地
+- 解压缩`unzip clientForLinux`
+- 执行 install.sh 安装脚本
+   - Ubuntu 
+      - `bash ./install.sh`
+      - 需要输入当前用户的密码
+   - 其他版本
+      - 请切换至Root用户，执行install.sh 
+      - `bash install.sh`
+
