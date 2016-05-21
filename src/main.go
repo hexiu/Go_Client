@@ -61,14 +61,22 @@ func send_message() bool {
 		return false
 	}
 	body, err := ioutil.ReadAll(conn.Body)
-	fmt.Println(string(body))
+	if err != nil {
+		fmt.Println("Get Server message error! ", err)
+	}
+
+	os.Create("message.txt")
+
+	file, err := os.OpenFile("message.txt", os.O_WRONLY, os.ModePerm)
+	if err != nil {
+		fmt.Println("Write message error !", err)
+	}
+	file.WriteString(string(body))
+
+	defer file.Close()
+
 	defer conn.Body.Close()
 
-	if err != nil {
-		return false
-	} else {
-		writeLog("Send Success " + time.Now().String())
-	}
 	// fmt.Println(mess)
 	// fmt.Println(mess.Proto)
 	return true
