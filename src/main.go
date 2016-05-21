@@ -17,7 +17,7 @@ const (
 	port    string = ""                  //远端服务器的ip
 	path    string = "/sign_action.php"  //远端服务器的URI
 	logPath string = "./log/"            //日志记录
-	Time    int    = 60
+	Time    int    = 20
 )
 
 var logname = GetLogName()
