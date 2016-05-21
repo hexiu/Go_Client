@@ -6,15 +6,17 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	// "strings"
+	"io/ioutil"
 	"time"
 )
 
 const (
-//	host    string = "127.0.0.1" //远端服务器的 主机域名 Or IP
-	host    string = "222.24.24.102" //远端服务器的 主机域名 Or IP
-	port    string = ":8080"         //远端服务器的ip
-	path    string = "/logs"         //远端服务器的URI
-	logPath string = "./log/"        //日志记录
+	//	host    string = "127.0.0.1" //远端服务器的 主机域名 Or IP
+	host    string = "ims.smartxupt.com" //远端服务器的 主机域名 Or IP
+	port    string = ""                  //远端服务器的ip
+	path    string = "/sign_action.php"  //远端服务器的URI
+	logPath string = "./log/"            //日志记录
 	Time    int    = 60
 )
 
@@ -22,10 +24,7 @@ var logname = GetLogName()
 var false_count int = 0
 
 func main() {
-	logging()
-	writeLog("test")
-	writeLog("test1")
-	writeLog("test2")
+	//logging()
 	for true {
 		//向服务器发送信息
 		err := send_message()
@@ -54,7 +53,17 @@ func send_message() bool {
 
 	var client http.Client
 	// fmt.Println(macAddress[0])
-	_, err := client.Get("http://" + host + port + path + "?mac=" + macAddress[1])
+	mac := macAddress[1][0:2] + macAddress[1][3:5] + macAddress[1][6:8] + macAddress[1][9:11] + macAddress[1][12:14] + macAddress[1][15:]
+	fmt.Println(mac)
+	conn, err := client.Get("http://" + host + port + path + "?agent=" + mac)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return false
+	}
+	body, err := ioutil.ReadAll(conn.Body)
+	fmt.Println(string(body))
+	defer conn.Body.Close()
+
 	if err != nil {
 		return false
 	} else {
