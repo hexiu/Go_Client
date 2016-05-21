@@ -13,11 +13,12 @@ import (
 
 const (
 	//	host    string = "127.0.0.1" //远端服务器的 主机域名 Or IP
-	host    string = "ims.smartxupt.com" //远端服务器的 主机域名 Or IP
-	port    string = ""                  //远端服务器的ip
-	path    string = "/sign_action.php"  //远端服务器的URI
-	logPath string = "./log/"            //日志记录
-	Time    int    = 20
+	host      string = "ims.smartxupt.com" //远端服务器的 主机域名 Or IP
+	port      string = ""                  //远端服务器的ip
+	path      string = "/sign_action.php"  //远端服务器的URI
+	logPath   string = "./log/"            //日志记录
+	Time      int    = 20
+	macSelect int    = 0
 )
 
 var logname = GetLogName()
@@ -49,12 +50,12 @@ func send_message() bool {
 	macAddress := getMacAddress()
 	// fmt.Println(macAddress)
 
-	wrinteInit("My MacAddress : " + macAddress[1])
+	wrinteInit("My MacAddress : " + macAddress[0] + macAddress[1])
 
 	var client http.Client
 	// fmt.Println(macAddress[0])
-	mac := macAddress[1][0:2] + macAddress[1][3:5] + macAddress[1][6:8] + macAddress[1][9:11] + macAddress[1][12:14] + macAddress[1][15:]
-	fmt.Println(mac)
+	mac := macAddress[macSelect][0:2] + macAddress[macSelect][3:5] + macAddress[macSelect][6:8] + macAddress[macSelect][9:11] + macAddress[macSelect][12:14] + macAddress[macSelect][15:]
+	// fmt.Println(mac)
 	conn, err := client.Get("http://" + host + port + path + "?agent=" + mac)
 	if err != nil {
 		fmt.Println("Error:", err)
@@ -89,9 +90,24 @@ func getMacAddress() (macAdress []string) {
 	index := 0
 	for _, inter := range interfaces {
 		mac := inter.HardwareAddr
-		macAdress[index] = fmt.Sprintf("%s", mac)
-		index++
+		Rmac := fmt.Sprintf("%s", mac)
+		// macAdress[index] = Rmac
+		if len(Rmac) == 17 {
+			// fmt.Println(Rmac[:2])
+			if string(Rmac[:2]) != "00" && string(Rmac[:2]) != "01" {
+				macAdress[index] = Rmac
+				index++
+				if index == 2 {
+					break
+				}
+			} else {
+				continue
+			}
+
+		}
 	}
+	// fmt.Println(macAdress)
+
 	return macAdress
 }
 

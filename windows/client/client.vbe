@@ -1,2 +1,0 @@
-set ws=wscript.createobject("wscript.shell")
-ws.run "d:\client\client.bat /start",0
