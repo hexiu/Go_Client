@@ -1,4 +1,4 @@
 #!/bin/bash
 #
 cd /tmp/;
-/opt/zypcAgent/agent&
+/opt/zypcAgent/agent &
